@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Validation Form</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+        
+<style>
+    .nameError, .emailError, .phoneError {
+        color: red;
+        display: none;
+    }
+</style>
+
+
+
+
+
+<div>
+
+    <h1>STUDENTS VALIDATION FORM</h1> <!-- Title added here -->
+    <form>
+        <input type="text" placeholder="Name" id="name">
+        <span class="nameError">Name must contain only letters</span>
+        <br>
+
+        <input type="text" placeholder="Email" id="email">
+        <span class="emailError">Please provide a valid Gmail address</span>
+        <br>
+
+        <input type="text" placeholder="Phone" id="phone">
+        <span class="phoneError">Number must contain only 10 digits</span>
+        <br>
+
+        <input type="submit" id="submit">
+    </form>
+
+    <footer>
+        
+            <p>  &copy@ Mathankumar.N</p>
+            
+        
+    </footer>
+
+</div>
+
+
+
+
+<script>
+    var submit = document.getElementById("submit");
+
+    submit.addEventListener("click", function(event) {
+        event.preventDefault();
+
+        var nameRegex = /^[a-zA-Z]+$/;
+        var emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+        var phoneRegex = /^\d{10}$/;
+
+        var name = document.getElementById("name");
+        var email = document.getElementById("email");
+        var phone = document.getElementById("phone");
+
+        var validate = true;
+
+        // Validate Name
+        if (!nameRegex.test(name.value)) {
+            document.querySelector(".nameError").style.display = "inline";
+            validate = false;
+        } else {
+            document.querySelector(".nameError").style.display = "none";
+        }
+
+        // Validate Email
+        if (!emailRegex.test(email.value)) {
+            document.querySelector(".emailError").style.display = "inline";
+            validate = false;
+        } else {
+            document.querySelector(".emailError").style.display = "none";
+        }
+
+        // Validate Phone
+        if (!phoneRegex.test(phone.value)) {
+            document.querySelector(".phoneError").style.display = "inline";
+            validate = false;
+        } else {
+            document.querySelector(".phoneError").style.display = "none";
+        }
+
+        // Final validation
+        if (validate) {
+            alert("Form Submitted Successfully");
+        }
+        
+    });
+</script>
+
+
+    
